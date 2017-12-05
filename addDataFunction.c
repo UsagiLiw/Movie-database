@@ -14,7 +14,7 @@ void getMovie(char*movie)
 	printf("ENTER MOVIE NAME:");
 	fgets(input,sizeof(input),stdin);
 	}
-	while(strle(input)!=0);
+	while(strcasecmp(input,\n)==0);
 	strcpy(movie,input);
 	
 }
@@ -41,7 +41,7 @@ void getRelease(int*release)
 	printf("ENTER THE RELEASE YEAR:");
 	fgets(input,sizeof(input),stdin);
 	}
-	while(checkYear(input)!=0);
+	while(checkDate(input)!=0);
 	strcpy(year,input);
 }
 
@@ -54,7 +54,7 @@ void getCategory(char*category)
 	printf("ENTER MOVIE CATEGORY:");
 	fgets(input,sizeof(input),stdin);
 	}
-	while(checkCategory(input)!=0);
+	while(checkLetter(input)!=0);
 	strcpy(year,input);
 }
 
@@ -66,7 +66,7 @@ void getLanguage(char*language)
 	printf("ENTER MOVIE LANGUAGE:");
 	fgets(input,sizeof(input),stdin);
 	}
-	while(checklanguage(input)!=0);
+	while(checkLetter(input)!=0);
 	strcpy(year,input);
 }
 
@@ -79,7 +79,7 @@ void getWatchdate(char*watch)
 	printf("ENTER WATCH DATE:");
 	fgets(input,sizeof(input),stdin);
 	}
-	while(checkwatchdate(input)!=0);
+	while(checkSeenDate(input)!=0);
 	strcpy(year,input);
 }
 
@@ -89,10 +89,10 @@ void getMethod(char*method)
 	do
 	{
 	printf("--------------------\n");
-	printf("ENTER WATCH METHOD:");
+	printf("ENTER METHOD:");
 	fgets(input,sizeof(input),stdin);
 	}
-	while(checkMethod(input)!=0);
+	while(checkLetter(input)!=0);
 	strcpy(year,input);
 }
 
@@ -104,6 +104,6 @@ void getRating(int*rating)
 	printf("ENTER MOVIE RATING:");
 	fgets(input,sizeof(input),stdin);
 	}
-	while(checkRating(input)!=0);
+	while(checkNumber(input)!=0);
 	strcpy(year,input);
 }
