@@ -45,7 +45,7 @@ void getRelease(int*release)
 	strcpy(year,input);
 }
 
-void getCategory(char category)
+void getCategory(char*category)
 {
 	char input[128];
 	do
