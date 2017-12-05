@@ -12,7 +12,7 @@ typedef struct
 	} MOVIE_T;	
 void getMovie(char*movie);
 void getActorName(char*name);
-void getRelease(int*release;
+void getRelease(int*release);
 void getCategory(char category);
 void getLanguage(char*language);
 void getWatchdate(char*watch);
