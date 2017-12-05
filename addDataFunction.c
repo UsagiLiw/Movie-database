@@ -89,7 +89,7 @@ void getMethod(char*method)
 	do
 	{
 	printf("--------------------\n");
-	printf("ENTER METHOD:");
+	printf("ENTER WATCH METHOD:");
 	fgets(input,sizeof(input),stdin);
 	}
 	while(checkMethod(input)!=0);
