@@ -56,3 +56,4 @@ int checkSeenDate(char* inputDate);
 *return 'check' value: 1 - if the input is over the date today
 *					   0 - if the input is under the date today*/
 int checkLetter(char* letterString);
+int checkNumber(char* letterString);
