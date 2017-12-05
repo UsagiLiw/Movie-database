@@ -197,10 +197,31 @@ int checkLetter(char* letterString)
     return check;
 }
 
-int main()
+int checkNumber(char* letterString)
 {
-	printf("Hello World\n");
-	return 0;
+	int i,length;
+	int check = 0;
+	
+	removeNewline(letterString);
+	if(strlen(letterString) < 1) /* if name is blank */
+	{
+		check = 1;
+	}
+	else if(strlen(letterString) >= 1)
+    {
+		for(i = 0; i < strlen(letterString); i++)
+        {
+			if(isdigit(letterString[i]) == 0)
+			{
+				printf("\nINVALID FORMAT: Must contain numbers only\n");
+				check = 1;
+                break;
+			}
+        }
+    }
+    return check;
 }
+
+
 
 
