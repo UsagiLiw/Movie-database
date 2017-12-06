@@ -52,8 +52,12 @@ int dateCompare(int day1,int month1,int year1,
 *					   0 - if the input is under the date today*/
 int checkSeenDate(char* inputDate);
 
-/*checkLetter function: Check if the input data is alphabet for every characters.
-*return 'check' value: 1 - if the input is over the date today
-*					   0 - if the input is under the date today*/
-int checkLetter(char* letterString);
-int checkNumber(char* letterString);
+/*checkCategory function: Check if the input data is one of the category defined.
+*return 'check' value: 1 - if the input is not one of the category
+*					   0 - if the input is one of the category defined*/
+int checkCategory(char* categoryString)
+
+/*checkLanguage function: Check if the input data is one of the languages listed 
+*return 'check' value: 1 - if the input is not one of the languages
+*					   2 - if the input is one of the the languages available*/
+int checkLanguage(char* languageString)
