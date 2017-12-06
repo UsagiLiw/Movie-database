@@ -209,10 +209,35 @@ int checkLanguage(char* languageString)
 		check = 1;
 	}
 	else if(strlen(languageString) >= 1)
-    {
+    	{
 		if(strstr(language,languageString) == NULL)
 		{
 			printf("INVALID LANGUAGE: Must be either THAI, ENGLISH or OTHER\n");
+			check = 1;
+		}
+	}
+	return check;
+}
+
+/*checkMethod function: Check if the input data is one of the valid option we specify
+*return 'check' value: 1 - if the input is not one of the method
+*		       0 - if the input is valid*/
+int checkMethod(char* methodString)
+{
+	int check = 0;
+	char* method = "THEATER|TV|DOWNLOADED|STREAMED";
+	
+	removeNewline(methodString);
+	if(strlen(methodString) < 1)
+	{
+		check = 1;
+	}
+	else if(strlen(methodString) >= 1)
+	{
+		if(strstr(method,methodString) == NULL)
+		{
+			printf("INVALID METHOD: Must be one of the following\n");
+			printf("\tTHEATER|TV|DOWNLOADED|STREAMED\n");
 			check = 1;
 		}
 	}

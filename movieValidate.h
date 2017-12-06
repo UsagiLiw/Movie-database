@@ -61,3 +61,8 @@ int checkCategory(char* categoryString);
 *return 'check' value: 1 - if the input is not one of the languages
 *					   2 - if the input is one of the the languages available*/
 int checkLanguage(char* languageString);
+
+/*checkMethod function: Check if the input data is one of the valid option we specify
+*return 'check' value: 1 - if the input is not one of the method
+*		       0 - if the input is valid*/
+int checkMethod(char* methodString);
