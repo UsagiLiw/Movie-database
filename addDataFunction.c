@@ -14,7 +14,7 @@ void getMovie(char*movie)
 	printf("ENTER MOVIE NAME:");
 	fgets(input,sizeof(input),stdin);
 	}
-	while(strcasecmp(input,\n)==0);
+	while(strcasecmp(input,"\n")==0);
 	strcpy(movie,input);
 	
 }
