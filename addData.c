@@ -28,9 +28,9 @@ void addData(MOVIE_T*addData,int*header)
 	strcpy(addData[i].seenDate, input);
 
 	getMethod(input);
-	strcpy(addDadta[i].viewMethod, input);
+	strcpy(addData[i].viewMethod, input);
 
 	getRating(input);
-	strcpy(addDadta[i].Rating, input);
+	strcpy(addData[i].Rating, input);
 }
 
