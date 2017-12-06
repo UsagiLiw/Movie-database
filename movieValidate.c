@@ -203,7 +203,7 @@ int checkLanguage(char* languageString)
 	int check = 0;
 	char* language = "ENGLISH|THAI|OTHER";		/*All of the possible language*/
 
-	//removeNewline(languageString);
+	removeNewline(languageString);
 	if(strlen(languageString) < 1) /* if name is blank */
 	{
 		check = 1;
