@@ -245,7 +245,7 @@ int checkMethod(char* methodString)
 }
 
 /*checkRating function: Check if the rating is between 1-10 or not
-*return 'check' value: 1 - if the input value is not between 0-5
+*return 'check' value: 1 - if the input value is not between 1-10
 		       0 - if the input is between 0-5*/
 int checkRating(int ratingString)
 {
@@ -253,7 +253,7 @@ int checkRating(int ratingString)
 	
 	if((ratingString < 1) || (ratingString > 10))
 	{
-		printf("INVALID RATING: Must be between 0-5\n");
+		printf("INVALID RATING: Must be between 1-10\n");
 		check = 1;
 	}
 	return check;
