@@ -8,7 +8,7 @@
 #include <ctype.h>
 #include <time.h>
 
-#include "movieFunctions.h"
+#include "movieValidate.h"
 
 /*dateToday function: This function will get the present date
 *					  then store the date of today into pDay,pMonth and pYear
@@ -22,7 +22,7 @@ void dateToday(int* pDay, int *pMonth, int* pYear)
     pTimeStruct = localtime(&seconds);
     *pDay = pTimeStruct->tm_mday;
     *pMonth = pTimeStruct->tm_mon + 1;
-    *pYear = pTimeStruct->tm_year + 1900;
+    *pYear = pTimeStruct->tm_year + 2443;
 }
 
 /*removeNewline function
@@ -53,9 +53,10 @@ int checkName(char* name)
     {
 		for(i = 0; i < strlen(name); i++)
         {
-			if(!(isalpha(name[i]) || name[i] == '.' || name[i] == '-' || name[i] == '\'' || isspace(name[i])))
+			if(!(isalpha(name[i]) || (name[i] == '.') || (name[i] == '-') || (name[i] == ',') || (name[i] == '\'') || (isspace(name[i]))))
 			{
 				printf("\nInvalid -- only alphabets(A-Z), apostrophe('), dash(-), and period(.) are allowed\n");
+				printf("Can use ',' to seperate name\n");
 				check = 1;
                 break;
 			}
@@ -93,9 +94,9 @@ int checkDate(char* inputDate)
 	{
 		for(i=0; (i < 10) && (check == 0) ; i++)
 		{
-			if(i == 2 || i == 5) /* do not interset '/' */
+			if(i == 4 || i == 7) /* do not interset '/' */
 			{
-			continue;
+				continue;
 			}
 			else if(!isdigit(inputDate[i])) /* date is digit or not */
 			{
@@ -109,7 +110,7 @@ int checkDate(char* inputDate)
 		sscanf(inputDate,"%d/%d/%d",&tempYear,&tempMonth,&tempDay); /* Collect inputDate into YYYY/MM/DD format */
 		if(tempMonth < 1 || tempMonth > 12) /*Month must be within 1 to 12*/
 		{
-			printf("INVALID DATE\n");
+			printf("INVALID MONTH\n");
 			check = 1;
 		}
 		else 
@@ -147,7 +148,7 @@ int dateCompare(int day1,int month1,int year1,
     return check;
 }    
 
-/*checkSeenDate function: Check if date that the user input is within the present or the past
+/*checkSeenDate function: Check if date that the user insert is within the present or the past
 *return 'check' value: 1 - if the input is over the date today
 *					   0 - if the input is under the date today*/
 int checkSeenDate(char* inputDate)
@@ -169,59 +170,64 @@ int checkSeenDate(char* inputDate)
 	return check;
 }
 
-/*checkLetter function: Check if the input data is alphabet for every characters.
-*return 'check' value: 1 - if the input is over the date today
-*					   0 - if the input is under the date today*/
-int checkLetter(char* letterString)
+/*checkCategory function: Check if the input data is one of the category defined.
+*return 'check' value: 1 - if the input is not one of the category
+*					   0 - if the input is one of the category defined*/
+int checkCategory(char* categoryString)
 {
-	int i,length;
 	int check = 0;
+	char* category = "DRAMA|COMEDY|ACTION|ROMANCE|HORROR|CARTOON|OTHER"; /*Contain all of the valid category*/
 	
-	removeNewline(letterString);
-	if(strlen(letterString) < 1) /* if name is blank */
+	removeNewline(categoryString);
+	if(strlen(categoryString) < 1) /* if name is blank */
 	{
 		check = 1;
 	}
-	else if(strlen(letterString) >= 1)
+	else if(strlen(categoryString) >= 1)
     {
-		for(i = 0; i < strlen(letterString); i++)
-        {
-			if(isalpha(letterString[i]) == 0)
-			{
-				printf("\nINVALID FORMAT: Must contain alphabets only\n");
-				check = 1;
-                break;
-			}
-        }
-    }
-    return check;
+		if(strstr(category,categoryString) == NULL)
+		{
+			printf("INVALID CATEGORY: Must be one of the following category\n");
+			printf("\tDRAMA|COMEDY|ACTION|ROMANCE|HORROR|CARTOON|OTHER\n");
+			check = 1;
+		}
+	}
+	return check;
 }
 
-int checkNumber(char* letterString)
+/*checkLanguage function: Check if the input data is one of the languages listed 
+*return 'check' value: 1 - if the input is not one of the languages
+*					   2 - if the input is one of the the languages available*/
+int checkLanguage(char* languageString)
 {
-	int i,length;
 	int check = 0;
-	
-	removeNewline(letterString);
-	if(strlen(letterString) < 1) /* if name is blank */
+	char* language = "ENGLISH|THAI|OTHER";		/*All of the possible language*/
+
+	//removeNewline(languageString);
+	if(strlen(languageString) < 1) /* if name is blank */
 	{
 		check = 1;
 	}
-	else if(strlen(letterString) >= 1)
+	else if(strlen(languageString) >= 1)
     {
-		for(i = 0; i < strlen(letterString); i++)
-        {
-			if(isdigit(letterString[i]) == 0)
-			{
-				printf("\nINVALID FORMAT: Must contain numbers only\n");
-				check = 1;
-                break;
-			}
-        }
-    }
-    return check;
+		if(strstr(language,languageString) == NULL)
+		{
+			printf("INVALID LANGUAGE: Must be either THAI, ENGLISH or OTHER\n");
+			check = 1;
+		}
+	}
+	return check;
 }
 
-
+int main()
+{
+	char string[64];
+	char yepyep[64];
+	fgets(string,sizeof(string),stdin);
+	sscanf(string,"%s",yepyep);
+	
+	printf("%d\n",checkSeenDate(yepyep));
+	return 0;
+}
 
 
