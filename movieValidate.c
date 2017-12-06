@@ -82,12 +82,12 @@ int checkDate(char* inputDate)
 	removeNewline(inputDate);
 	if(strlen(inputDate) != 10) /* if date length is not 10 -- INVALID */
 	{
-		printf("INVALID FORMAT - MUST BE YYYY/MM/DD\n");
+		printf("INVALID FORMAT - MUST BE YYYY-MM-DD\n");
 		check = 1;
 	}
-	else if((inputDate[4] != '/') || (inputDate[7] != '/')) /* if do not have slash '/' -- INVALID  */
+	else if((inputDate[4] != '-') || (inputDate[7] != '-')) /* if do not have slash '/' -- INVALID  */
 	{
-		printf("INVLAID FORMAT - MUST BE YYYY/MM/DD\n");
+		printf("INVLAID FORMAT - MUST BE YYYY-MM-DD\n");
 		check = 1;
 	}
 	else 
@@ -107,7 +107,7 @@ int checkDate(char* inputDate)
 	}
 	if(check == 0) 
 	{
-		sscanf(inputDate,"%d/%d/%d",&tempYear,&tempMonth,&tempDay); /* Collect inputDate into YYYY/MM/DD format */
+		sscanf(inputDate,"%d-%d-%d",&tempYear,&tempMonth,&tempDay); /* Collect inputDate into YYYY/MM/DD format */
 		if(tempMonth < 1 || tempMonth > 12) /*Month must be within 1 to 12*/
 		{
 			printf("INVALID MONTH\n");
@@ -159,7 +159,7 @@ int checkSeenDate(char* inputDate)
 	dateToday(&pDay,&pMonth,&pYear);
 	if(checkDate(inputDate) == 0)
 	{
-		sscanf(inputDate,"%d/%d/%d",&tempYear,&tempMonth,&tempDate);		/* Collect inputDate into YYYY/MM/DD format */
+		sscanf(inputDate,"%d-%d-%d",&tempYear,&tempMonth,&tempDate);		/* Collect inputDate into YYYY/MM/DD format */
 		check = dateCompare(tempDate,tempMonth,tempYear,pDay,pMonth,pYear);	/* Compare seen date with the date today*/		
 	}
 	else
