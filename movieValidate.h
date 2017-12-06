@@ -69,5 +69,5 @@ int checkMethod(char* methodString);
 
 /*checkRating function: Check if the rating is between 0-5 or not
 *return 'check' value: 1 - if the input value is not between 0-5
-		       0 - if the input is between 0-5*/
+		       0 - if the input is between 1-10*/
 int checkRating(int ratingString);
