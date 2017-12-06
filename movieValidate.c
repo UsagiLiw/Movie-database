@@ -219,15 +219,6 @@ int checkLanguage(char* languageString)
 	return check;
 }
 
-int main()
-{
-	char string[64];
-	char yepyep[64];
-	fgets(string,sizeof(string),stdin);
-	sscanf(string,"%s",yepyep);
-	
-	printf("%d\n",checkSeenDate(yepyep));
-	return 0;
-}
+
 
 
