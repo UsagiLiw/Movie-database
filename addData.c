@@ -10,27 +10,27 @@ void addData(MOVIE_T*addData,int*header)
 	char input[MAXBUFFER];
 	memset(input, 0, sizeof(input));
 	getMovie(input);
-	strcpy(addDadta->title, input);
+	strcpy(addData[i].title, input);
 
 	getActorName(input);
-	strcpy(addDadta->actor, input);
+	strcpy(addData[i].actor, input);
 
 	getCategory(input);
-	strcpy(addDadta->category, input);
+	strcpy(addData[i].category, input);
 
 	getLanguage(input);
-	strcpy(addDadta->language, input);
+	strcpy(addData[i].language, input);
 
 	getRelease(input);
-	strcpy(addDadta->releaseDate, input);
+	strcpy(addDadta[i].releaseDate, input);
 
 	getWatchdate(input);
-	strcpy(addDadta->seenDate, input);
+	strcpy(addData[i].seenDate, input);
 
 	getMethod(input);
-	strcpy(addDadta->viewMethod, input);
+	strcpy(addDadta[i].viewMethod, input);
 
 	getRating(input);
-	strcpy(addDadta->Rating, input);
+	strcpy(addDadta[i].Rating, input);
 }
 
