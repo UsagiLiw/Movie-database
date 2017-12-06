@@ -4,6 +4,7 @@
 #include<ctype.h>
 #include<time.h>
 
+#include"movieValidate.h"
 void getMovie(char*movie)
 {
 
@@ -32,7 +33,7 @@ void getActorName(char*name)
 	strcpy(name,input);
 }
 
-void getRelease(int*release)
+void getRelease(char*release)
 {
 	char input[128];
 	do
@@ -42,12 +43,13 @@ void getRelease(int*release)
 		fgets(input,sizeof(input),stdin);
 	}
 	while(checkDate(input)!=0);
-	strcpy(year,input);
+	strcpy(release,input);
 }
 
 void getCategory(char*category)
 {
 	char input[128];
+	int i;
 	do
 	{
 		printf("--------------------\n");
@@ -58,12 +60,13 @@ void getCategory(char*category)
 			isupper(input[i]);
 		}
 	}
-	while(checkLetter(input)!=0);
-	strcpy(year,input);
+	while(checkCategory(input)!=0);
+	strcpy(category,input);
 }
 
 void getLanguage(char*language)
 {
+	char input[128];
 	int i;
 	do
 	{
@@ -75,21 +78,21 @@ void getLanguage(char*language)
 			isupper(input[i]);
 		}
 	}
-	while(checkLetter(input)!=0);
-	strcpy(year,input);
+	while(checkLanguage(input)!=0);
+	strcpy(language,input);
 }
 
 void getWatchdate(char*watch)
 {
 	char input[128];
-	do
+	while(1)
 	{
 		printf("--------------------\n");
 		printf("ENTER WATCH DATE:");
 		fgets(input,sizeof(input),stdin);
 	}
 	while(checkSeenDate(input)!=0);
-	strcpy(year,input);
+	strcpy(watch,input);
 }
 
 void getMethod(char*method)
@@ -101,18 +104,22 @@ void getMethod(char*method)
 		printf("ENTER METHOD:");
 		fgets(input,sizeof(input),stdin);
 	}
-	while(checkLetter(input)!=0);
-	strcpy(year,input);
+	while(checkMethod(input)!=0);
+	strcpy(method,input);
 }
 
 void getRating(int*rating)
 {
+	char input[128];
+	int rate;
 	do
 	{
 		printf("--------------------\n");
-		printf("ENTER MOVIE RATING:");
+		printf("ENTER MOVIE RATING:");	/*Enter num from 1 - 5*/
 		fgets(input,sizeof(input),stdin);
+		sscanf(input,"%d",&rate);
 	}
-	while(checkNumber(input)!=0);
-	strcpy(year,input);
+	while(checkRating(rate)!=0);
+	
 }
+
