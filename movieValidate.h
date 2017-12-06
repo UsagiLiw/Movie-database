@@ -55,9 +55,9 @@ int checkSeenDate(char* inputDate);
 /*checkCategory function: Check if the input data is one of the category defined.
 *return 'check' value: 1 - if the input is not one of the category
 *					   0 - if the input is one of the category defined*/
-int checkCategory(char* categoryString)
+int checkCategory(char* categoryString);
 
 /*checkLanguage function: Check if the input data is one of the languages listed 
 *return 'check' value: 1 - if the input is not one of the languages
 *					   2 - if the input is one of the the languages available*/
-int checkLanguage(char* languageString)
+int checkLanguage(char* languageString);
