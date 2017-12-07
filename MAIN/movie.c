@@ -20,6 +20,36 @@
 #include "../displayData/displayData.h"
 #include "../addData/addData.h"
 #include "../ioFunction/ioFunction.h"
+#include "../search/search.h"
+
+/*void searchFunction(MOVIE_T* movie[]) 
+{
+	printf("Which information you want to search?\n");
+	printf("1. Movie Title\n");
+	printf("2. Actor name\n");
+	printf("3. Category\n");
+	printf("4. Release year\n");
+	printf("5. \n");
+}*/
+void exitProgram()
+{
+	char terminalInput[256];
+	char yesNo;
+	
+	printf("Are you sure you want to exit program? (y/n)");
+	fgets(terminalInput, sizeof(terminalInput), stdin);
+	sscanf(terminalInput, "%c", &yesNo);
+	switch(yesNo)
+	{
+		case 'y' :
+			printf("Goodbye!");
+			exit(1);
+		case 'n' :	
+			break;
+		default :
+			printf("Please select only 'y' or 'n'\n\n");
+	}
+}
 
 int main()
 {
@@ -53,11 +83,9 @@ int main()
 	{
 		printf("What do you want to do?\n");
 		printf("1. Display\n");
-		printf("2. Add\n");
-		printf("3. Edit\n");		
-		printf("4. Delete\n");		
-		printf("5. Search\n");
-		printf("6. EXIT\n");
+		printf("2. Add\n");				
+		printf("3. Search\n");
+		printf("4. EXIT\n");
 		fgets(terminalInput,sizeof(terminalInput),stdin);
 		sscanf(terminalInput,"%d",&choice);
 		switch(choice)
@@ -71,19 +99,13 @@ int main()
 				addData(movie, header);
 				break;
 			case 3 :
-				printf("Edit!\n");
-				
+				printf("Search!\n");
+				searchOption(movie, header);
 				break;
 			case 4 :
-				printf("Delete!\n");
-				break;
-			case 5 :
-				printf("Search!\n");
-				break;
-			case 6 :
-				printf("EXIT! Goodbye!\n");
-				fclose(pIn);
-				exit(1);
+				printf("EXIT!\n");
+				exitProgram();
+
 			default :
 				printf("Error - Command not found");
 		}
