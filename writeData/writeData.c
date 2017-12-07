@@ -52,24 +52,20 @@ void readBuffer(char *buffer, MOVIE_T *movie)
 		}
 	}
 
-void writeDatabase(MOVIE_T *movie,int *header)
+void writeDatabase(MOVIE_T *movie, FILE*inputFile, int *header)
 {
-	FILE *outputFile = NULL; 
-	outputFile = fopen(DATABASE, "w");
-	if(outputFile == NULL)
+	int i;
+	fprintf(inputFile,"%d\n",header);
+	for(i=0;i<header;i++)
 	{
-        printf("can't open output file\n");
-        exit(1);
+		fprintf(inputFile,"[%s] [%s] [%s] [%c] [%s] [%s] [%s] [%s] [%s] [%s]\n", movie[i].title, movie[i].actor, movie[i].language, movie[i].releaseDate, movie[i].seenDate, movie[i].viewMethod, movie[i].Rating);
 	}
-
-    fclose(outputFile);
 }
 
 int main()
 	{
 	char buffer[4096];
 	int header[2] = {0,0};
-	int count = 0;
 	MOVIE_T *movie = NULL;
 	FILE *inputFile = NULL;
 
@@ -93,9 +89,9 @@ int main()
 	while(fgets(buffer,sizeof(buffer),inputFile) != NULL)
 	{
 		removeNewline(buffer);
-		readBuffer(buffer, (movie+count));
-		printf("[%s] [%s] [%s] [%c] [%s] [%s] [%s] [%s] [%s] [%s]\n", (movie+count)->title, (movie+count)->actor, (movie+count)->category, (movie+count)->releaseDate, (movie+count)->seenDate, (movie+count)->viewMethod, (movie+count)->rating);
-		count++;
+		readBuffer(buffer, movie);
+		printf("[%s] [%s] [%s] [%c] [%s] [%s] [%s] [%s] [%s] [%s]\n", movie[i].title, movie[i].actor, movie[i].language, movie[i].releaseDate, movie[i].seenDate, movie[i].viewMethod, movie[i].Rating);
+		
 	}
 	fclose(inputFile);
 	writeDatabase(movie, header);
