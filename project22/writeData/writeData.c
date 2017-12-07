@@ -24,6 +24,7 @@ void readBuffer(char *buffer, MOVIE_T *movie)
 	{
 	char *token = NULL;
 	int count = 0;
+	int i;
 	
 	token = strtok(buffer, "[]");
 	while(token != NULL)
@@ -55,7 +56,7 @@ void readBuffer(char *buffer, MOVIE_T *movie)
 
 void writeDatabase(MOVIE_T *movie, int *header)
 {
-	FILE*inputFile = NULL;
+	FILE* inputFile = NULL;
 	int i;
 
 	inputFile = fopen("../DATABASE.txt", "w");
@@ -77,53 +78,10 @@ void writeDatabase(MOVIE_T *movie, int *header)
 	}
 	fclose(inputFile);
 }
-
-void driverFunction()
+int main()
 {
-	
+	printf("hello world\n");
 }
-/*int main()
-	{
-	char buffer[4096];
-	int header[2] = {0,0};
-	MOVIE_T *movie = NULL;
-	FILE *inputFile = NULL;
-
-	inputFile = fopen("../DATABASE.txt", "r");
-	if(inputFile == NULL)
-	{
-		printf("Cannot open the file!\n");
-		exit (1);
-	}
-	sscanf(buffer, "%d %d", &header[0], &header[1]);
-	/* allocate memories for hold each data */
-	/*movie = (MOVIE_T*) calloc(header[1], sizeof(MOVIE_T));
-	/* if can't reserve memories display error and exit */
-	/*if(movie == NULL)
-	{
-		printf("Cannot allocate memories\n");
-		exit(2);
-	}
- 
-	
-	while(fgets(buffer,sizeof(buffer),inputFile) != NULL)
-	{
-		removeNewline(buffer);
-		readBuffer(buffer, movie);
-		printf("[%s] [%s] [%s] [%c] [%s] [%s] [%s] [%s] [%s] [%d]\n", movie[i].title
-														, movie[i].actor
-														, movie[i].language
-														, movie[i].releaseDate
-														, movie[i].seenDate
-														, movie[i].viewMethod
-														, movie[i].Rating);
-		
-	}
-	fclose(inputFile);
-	writeDatabase(movie, header);
-
-	return 0;
-	}*/
 
 
 

@@ -26,7 +26,7 @@ int titleSearch(MOVIE_T* movie, int* header, char search)
 	displaySearch(count, position)
 	return count;
 }
-int actorSearch(MOVIE* movie, int* header, char search)
+int actorSearch(MOVIE_T* movie, int* header, char search)
 {
 	char tmpActor[128];
 	int* position;
@@ -45,7 +45,7 @@ int actorSearch(MOVIE* movie, int* header, char search)
 	displaySearch(count, position)
 	return count;
 }
-int categorySearch(MOVIE* movie, int* header, char search)
+int categorySearch(MOVIE_T* movie, int* header, char search)
 {
 	char tmpCategory[128];
 	int* position;
@@ -65,7 +65,7 @@ int categorySearch(MOVIE* movie, int* header, char search)
 	displaySearch(count, position)
 	return count;
 }
-int releaseSearch(MOVIE* movie, int* header, char search)
+int releaseSearch(MOVIE_T* movie, int* header, char search)
 {
 	char tmpRelease[128];
 	int* position;
