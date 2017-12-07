@@ -83,7 +83,7 @@ int releaseSearch(MOVIE* movie, int* header, char search)
 	return count;
 }
 
-int displaySearch(int count, int* position)
+int displaySearch(MOIVIE_T*movie, int count, int* position)
 {
     char input[64];
     char choice[64];
@@ -135,7 +135,7 @@ int displaySearch(int count, int* position)
 			if(input[0] == 'y')
 			{
                 /* call function to delete data */
-				deleteData(patient, header, position[which]);
+				deleteData(movie, header, position[which]);
 			}
 			
         	
