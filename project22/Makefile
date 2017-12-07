@@ -1,0 +1,48 @@
+# Makefile
+# Makefile for movie
+# By Bhimapaka Thapanangkun
+# ID: 60070503447	
+
+COMPILE = gcc -Wall -o
+
+#DATABASE = DATABASE
+#PATH_DATABASE = ./$(DATABASE)
+
+MAIN_FUNCTION = movie
+MAIN = ./MAIN/$(MAIN_FUNCTION)
+
+FUNCTION_1 = ioFunction
+FUNCT_1 = ./$(FUNCTION_1)/$(FUNCTION_1)
+
+FUNCTION_2 = displayData
+FUNCT_2 = ./$(FUNCTION_2)/$(FUNCTION_2)
+
+FUNCTION_3 = search
+FUNCT_3 = ./$(FUNCTION_3)/$(FUNCTION_3)
+
+FUNCTION_4 = movieValidate
+FUNCT_4 = ./$(FUNCTION_4)/$(FUNCTION_4)
+
+FUNCTION_5 = editFunction
+FUNCT_5 = ./$(FUNCTION_5)/$(FUNCTION_5)
+
+FUNCTION_6 = deletion
+FUNCT_6 = ./$(FUNCTION_6)/$(FUNCTION_6)
+
+FUNCTION_7 = addData
+FUNCT_7 = ./$(FUNCTION_8)/$(FUNCTION_8)
+
+ALL = $(MAIN).c $(MAIN).h $(FUNCT_1).c $(FUNCT_1).h $(FUNCT_2).c $(FUNCT_2).h $(FUNCT_3).c $(FUNCT_3).h $(FUNCT_4).c $(FUNCT_4).h $(FUNCT_5).c $(FUNCT_5).h $(FUNCT_6).c $(FUNCT_6).h $(FUNCT_7).c $(FUNCT_7).h
+
+all: make
+
+make: $(ALL)
+	@echo COMPILING...
+	@$(COMPILE) $(MAIN_FUNCTION) $(MAIN).c $(FUNCT_1).c $(FUNCT_2).c $(FUNCT_3).c $(FUNCT_4).c $(FUNCT_5).c $(FUNCT_6).c $(FUNCT_7).c
+	@echo OPENING $(MAIN_FUNCTI0N)
+	@./$(MAIN_FUNCTION)
+	@echo FINISHED.
+
+clean:
+	@-rm $(MAIN_FUNCTION)
+	@echo $(MAIN_FUNCTION) deleted.
