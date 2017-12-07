@@ -127,7 +127,7 @@ int displaySearch(MOIVIE_T*movie, int count, int* position)
         	{
 			do
 			{
-				printf("= Do you want to delete this data? (y/n): ");
+				printf("Do you want to delete this data? (y/n): ");
 				fgets(input,sizeof(input),stdin);
 				removeNewline(input);
 				input[0] = tolower(input[0]);
