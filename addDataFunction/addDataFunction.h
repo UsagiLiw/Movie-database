@@ -1,6 +1,9 @@
-/********************
-Validate function
-********************/	
+/**********************************************
+addDataFunction.h 
+contain function that use in addData.c
+create by Nutchanon Veraphichkasem 60070503422
+7 December 2017
+***********************************************/	
 
 /*This function ask for movie name, if user didn't anything,
  it will loop until user enter something*/
