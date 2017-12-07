@@ -108,7 +108,7 @@ int displaySearch(MOIVIE_T*movie, int count, int* position)
         	printf("What do you want to do next:\n");
       		printf("1 - Edit\n");
         	printf("2 - Delete\n");
-        	printf("0 - Exit\n");
+        	printf("0 - Back\n");
         	printf("Enter your choice:");
         	fgets(choice, sizeof(choice), stdin);
         	if(choice < 0 || choice > 2)
@@ -207,7 +207,7 @@ int searchOption(MOVIE_T* movie, int *header)
         printf("2 - Actor\n");
         printf("3 - Category\n");
         printf("4 - Release Year(Buddish year)\n");
-        printf("0 - Exit\n");
+        printf("0 - Back\n");
         printf("Enter your choice:");
         memset(input, 0, sizeof(input));
         memset(choice, 0, sizeof(choice));
