@@ -3,39 +3,84 @@
 #include <string.h>
 #include <ctype.h>
 
-int titleSearch(MOVIE* movie, int* header, char inputSearch)
+int titleSearch(MOVIE* movie, int* header, char search)
 {
-	char tmpName[128];
+	char tmpTitle[128];
 	int* position;
 	int count = 0;
-	int i = 0;
+	int i;
 
+	position = (int*) calloc(header, sizeof(int));
 	for(i=0; i < header; i++)
 	{
-		strcpy(tmpName, movie->name);
-		if(strstr(tmpName, search) != NULL)
+		strcpy(tmpTitle, movie->title);
+		if(strstr(tmpTitle, search) != NULL)
 		{
-			checkName = strstr(tmpName, search) - tmpName;
-			if(checkName == 0)
-			{
-           		count++;
-				position[count] = i;
-			}
+           	count++;
+			printf("#%d - %s", count, movie->title);
+			position[count] = i;
 		}
 	}
 	displaySearch(count, position)
+	return count;
 }
-int actorSearch(MOVIE* movie, int* header, char inputSearch)
+int actorSearch(MOVIE* movie, int* header, char search)
 {
+	char tmpActor[128];
 	int* position;
+	int count = 0;
+	int i;
+	for(i=0; i < header; i++)
+	{
+		strcpy(tmpActor, movie->actor);
+		if(strstr(tmpActor, search) != NULL)
+		{
+           	count++;
+			printf("#%d - %s", count, movie->actor);
+			position[count] = i;
+		}
+	}
+	displaySearch(count, position)
+	return count;
 }
-int categorySearch(MOVIE* movie, int* header, char inputSearch)
+int categorySearch(MOVIE* movie, int* header, char search)
 {
+	char tmpCategory[128];
 	int* position;
+	int count = 0;
+	int i;
+
+	for(i=0; i < header; i++)
+	{
+		strcpy(tmpCategory, movie->category);
+		if(strstr(tmpCategory, search) != NULL)
+		{
+           	count++;
+			printf("#%d - %s", count, movie->category);
+			position[count] = i;
+		}
+	}
+	displaySearch(count, position)
+	return count;
 }
-int releaseSearch(MOVIE* movie, int* header, char inputSearch)
+int releaseSearch(MOVIE* movie, int* header, char search)
 {
+	char tmpRelease[128];
 	int* position;
+	int count = 0;
+	int i;
+	for(i=0; i < header; i++)
+	{
+		strcpy(tmpRelease, movie->releaseDate)
+		if(strstr(tmpCategory, search) != NULL)
+		{
+           	count++;
+			printf("#%d - %s", count, movie->releaseDate);
+			position[count] = i;
+		}
+	}
+	displaySearch(count, position)
+	return count;
 }
 
 int displaySearch(int count, int* position)
@@ -101,35 +146,35 @@ int displaySearch(int count, int* position)
 void searchData(MOVIE_T* movie, int* header, int choice)
 {
     char inputSearch[256];
-	
-	
-	position = (int*) calloc(header, sizeof(int));
+	char search[256];
+
 	while(1)
 	{
 		memset(inputSearch, 0, sizeof(inputSearch));
        	if(choice == 1)
        	{
-       	    printf("Enter movie title:");
-       	    fgets(inputSearch, sizeof(inputSearch), stdin);
-			titleSearch(movie, header, inputSearch)
+			getMovieName(inputSearch);
+			strcpy(search, inputSearch);
+			titleSearch(movie, header, search);
        	}
        	if(choice == 2)
        	{
-       	    printf("Enter actor name:");
-       	    fgets(inputSearch, sizeof(inputSearch), stdin);
-			actorSearch(movie, header, inputSearch)
+       	    getActorName(inputSearch);
+			strcpy(search, inputSearch);
+			actorSearch(movie, header, search);
        	}
        	if(choice == 3)
        	{
-       	    printf("Enter Category:");
-       	    fgets(inputSearch, sizeof(inputSearch), stdin);
-			categorySearch(movie, header, inputSearch)
+       	    getCategory(inputSearch);
+			strcpy(search, inputSearch);
+			categorySearch(movie, header, search);
        	}
        	if(choice == 4)
        	{
-       	    printf("Enter release year:");
+       	    printf("Enter release year(Buddish year):");
        	    fgets(inputSearch, sizeof(inputSearch), stdin);
-			releaseSearch(movie, bheader, inputSearch)
+			strcpy(search, inputSearch);
+			releaseSearch(movie, header, search);
        	}
 		if(count == 0)
    		{
@@ -142,7 +187,7 @@ void searchData(MOVIE_T* movie, int* header, int choice)
 		do
 		    {
 			memset(input, 0, sizeof(input));
-			printf("==== WHICH RECORD DO YOU WANT TO SEE: ");
+			printf("Whice data ");
 		    fgets(input,sizeof(input),stdin);
 			}while(atoi(input) < 1 || atoi(input) > count || isdigit(input[0]) == 0);
 			sscanf(input, "%d", &which);
