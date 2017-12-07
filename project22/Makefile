@@ -1,26 +1,41 @@
-CC	= gcc
+EXECUTABLES=./MAIN/movie
 
-FUNC_0	= movie 
-FUNC_1	= addData
-FUNC_2	= codeGen
-FUNC_3	= deletion
-FUNC_4	= displayData
-FUNC_5	= editFunction
-FUNC_6	= ioFunction
-FUNC_7	= movieValidate
-FUNC_8	= search
-FUNC_9	= writeData
+all : $(EXECUTABLES)
 
-PATH_0	= ./$(FUNC_0)/$(FUNC_0)
-PATH_1	= ./$(FUNC_1)/$(FUNC_1)
-PATH_2	= ./$(FUNC_2)/$(FUNC_2)
-PATH_3	= ./$(FUNC_3)/$(FUNC_3)
-PATH_4	= ./$(FUNC_4)/$(FUNC_4)
-PATH_5	= ./$(FUNC_5)/$(FUNC_5)
-PATH_6	= ./$(FUNC_6)/$(FUNC_6)
-PATH_7	= ./$(FUNC_7)/$(FUNC_7)
-PATH_8	= ./$(FUNC_8)/$(FUNC_8)
-PATH_9	= ./$(FUNC_9)/$(FUNC_9)
+addData.o : ./addData/addData.c ./addData/addData.h
+	gcc -c addData.c
 
-ALL	= 
-all	: 
+codeGen.o : ./codeGen/codeGen.c ./codeGen/codeGen.h
+	gcc -c codeGen.c
+
+deletion.o : ./deletion/deletion.c ./deletion/deletion.h
+	gcc -c deletion.c
+
+displayData.o : ./displayData/displayData.c ./displayData/displayData.h
+	gcc -c displayData.c
+
+editFunction.o : ./editFunction/editFunction.c ./editFunction/editFunction.h
+	gcc -c editFunction.c
+
+ioFunction.o : ./ioFunction/ioFunction.c ./ioFunction/ioFunction.h
+	gcc -c ioFunction.c
+
+movieValidate.o : ./movieValidate/movieValidate.c ./movieValidate/movieValidate.h
+	gcc -c movieValidate.c
+
+search.o : ./search/search.c ./search/search.h
+	gcc -c search.c
+
+writeData.o : ./writeData/writeData.c ./writeData/writeData.h
+	gcc -c writeData.c
+
+movie.o : ./MAIN/movie.c ./MAIN/movie.h 
+	gcc -c movie.c
+
+movie : movie.o addData.o codeGen.o deletion.o displayData.o editFunction.o ioFunction.o movieValidate.o search.o writeData.o
+	gcc -o movie movie.o addData.o codeGen.o deletion.o displayData.o editFunction.o ioFunction.o movieValidate.o search.o writeData.o
+
+clean:
+	-rm *.o
+	-rm movie
+

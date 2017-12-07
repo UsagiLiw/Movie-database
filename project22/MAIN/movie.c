@@ -73,8 +73,8 @@ int main()
 		printf("Create file success\n\n");
 	}
 	fclose(pIn); 
-	readHeader(header); /*ลอง printf ดูด้วย*/
-	movie = (MOVIE_T*) calloc(header, sizeof(MOVIE_T));
+	readHeader(&header); /*ลอง printf ดูด้วย*/
+	movie = calloc(header, sizeof(MOVIE_T));
 	readData(movie);
 	printf("===================================");
 	printf("\nWELCOME TO YOUR MOVIE DATABASE\n");
@@ -92,11 +92,11 @@ int main()
 		{
 			case 1 :
 				printf("Display!\n");
-				displayData(movie, header);
+				displayData(movie, &header);
 				break;
 			case 2 :
 				printf("Add!\n");
-				addData(movie, header);
+				addData(&movie, header);
 				break;
 			case 3 :
 				printf("Search!\n");
@@ -110,6 +110,7 @@ int main()
 				printf("Error - Command not found");
 		}
 	fclose(pIn);
+	free(movie)
 	}
 	return 0;
 }

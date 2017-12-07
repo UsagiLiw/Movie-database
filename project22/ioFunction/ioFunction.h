@@ -17,7 +17,7 @@ void readHeader(int*header);
 	Argument: movie - stored data
 			header - amount of data
 */
-void readData(MOVIE_T*movie,int*header);
+void readData(MOVIE_T*movie);
 
 /*	writeData
 	This function will write the data in to .txt file

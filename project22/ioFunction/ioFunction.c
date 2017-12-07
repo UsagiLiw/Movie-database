@@ -37,7 +37,7 @@ void readHeader(int* header)
 	Argument: movie - stored data
 			header - amount of data
 */	
-void readData(MOVIE_T* movies[])				
+void readData(MOVIE_T* movies)				
 {	
 	FILE* inputFile = NULL;
 	char inputLine[256];

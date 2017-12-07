@@ -147,7 +147,7 @@ void getRating(int* rating)
 }
 
 
-void addData(MOVIE_NT* movie)
+void addData(MOVIE_NT* movie[])
 {
 	char stringInput[256];
 	char title[256];

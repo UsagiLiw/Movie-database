@@ -78,10 +78,6 @@ void writeDatabase(MOVIE_T *movie, int *header)
 	}
 	fclose(inputFile);
 }
-int main()
-{
-	printf("hello world\n");
-}
 
 
 
