@@ -109,7 +109,7 @@ int displaySearch(int count, int* position)
       		printf("1 - Edit\n");
         	printf("2 - Delete\n");
         	printf("0 - Exit\n");
-        	printf("Enter your choice:")
+        	printf("Enter your choice:");
         	fgets(choice, sizeof(choice), stdin);
         	if(choice < 0 || choice > 2)
         	{
