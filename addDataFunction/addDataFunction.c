@@ -1,3 +1,9 @@
+/*********************************************************************
+	addDatafunction.c
+	This file contain all functions that use with addData.c
+	create by Nutchanon Veraphichkasem 60070503422
+	7 December 2017
+***********************************************************************/
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
