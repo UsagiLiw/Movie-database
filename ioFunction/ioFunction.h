@@ -4,7 +4,7 @@
 	created by Nutchanon Veraphichkasem 60070503422
 	7 December 2017
 ***********************************************************/
-#define DATABASE "DATABASE.txt"
+#define DATABASE "../DATABASE.txt"
 
 /*	readHeader
 	This function will read the header file
@@ -24,4 +24,4 @@ void readData(MOVIE_T*movie,int*header);
 	Argument: movie - data write to txt file
 			header - amount of data
 */
-void writeData(MOVIE_T*movie,int*header);
+/*void writeData(MOVIE_T*movie,int*header);*/
