@@ -104,7 +104,7 @@ void writeDatabase(MOVIE_T *movie, int *header)
 	{
 		removeNewline(buffer);
 		readBuffer(buffer, movie);
-		printf("[%s] [%s] [%s] [%s] [%s] [%s] [%s] [%s] [%s] [%d]\n", movie[i].title
+		printf("[%s] [%s] [%s] [%c] [%s] [%s] [%s] [%s] [%s] [%d]\n", movie[i].title
 														, movie[i].actor
 														, movie[i].language
 														, movie[i].releaseDate
@@ -118,3 +118,5 @@ void writeDatabase(MOVIE_T *movie, int *header)
 
 	return 0;
 	}*/
+
+
