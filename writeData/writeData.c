@@ -52,17 +52,31 @@ void readBuffer(char *buffer, MOVIE_T *movie)
 		}
 	}
 
-void writeDatabase(MOVIE_T *movie, FILE*inputFile, int *header)
+void writeDatabase(MOVIE_T *movie, int *header)
 {
+	FILE*inputFile = NULL;
 	int i;
-	fprintf(inputFile,"%d\n",header);
-	for(i=0;i<header;i++)
+	inputFile = fopen("../DATABASE.txt","w");
+	if(inputFile == NULL)
 	{
-		fprintf(inputFile,"[%s] [%s] [%s] [%c] [%s] [%s] [%s] [%s] [%s] [%s]\n", movie[i].title, movie[i].actor, movie[i].language, movie[i].releaseDate, movie[i].seenDate, movie[i].viewMethod, movie[i].Rating);
+		printf("Error opening file, file not found\n")
+		exit(1);
 	}
+	fprintf(inputFile,"%d\n",header);
+	for(i = 0; i < header; i++)
+	{
+		fprintf(inputFile,"[%s] [%s] [%s] [%c] [%s] [%s] [%s] [%s] [%s] [%d]\n", movie[i].title
+																, movie[i].actor
+																, movie[i].language
+																, movie[i].releaseDate
+																, movie[i].seenDate
+																, movie[i].viewMethod
+																, movie[i].Rating);
+	}
+	fclose(inputFile);
 }
 
-int main()
+/*int main()
 	{
 	char buffer[4096];
 	int header[2] = {0,0};
@@ -77,24 +91,35 @@ int main()
 	}
 	sscanf(buffer, "%d %d", &header[0], &header[1]);
 	/* allocate memories for hold each data */
-	movie = (MOVIE_T*) calloc(header[1], sizeof(MOVIE_T));
+	/*movie = (MOVIE_T*) calloc(header[1], sizeof(MOVIE_T));
 	/* if can't reserve memories display error and exit */
-	if(movie == NULL)
+	/*if(movie == NULL)
 	{
 		printf("Cannot allocate memories\n");
 		exit(2);
 	}
  
-	/* get all data */
+	
 	while(fgets(buffer,sizeof(buffer),inputFile) != NULL)
 	{
 		removeNewline(buffer);
 		readBuffer(buffer, movie);
-		printf("[%s] [%s] [%s] [%c] [%s] [%s] [%s] [%s] [%s] [%s]\n", movie[i].title, movie[i].actor, movie[i].language, movie[i].releaseDate, movie[i].seenDate, movie[i].viewMethod, movie[i].Rating);
+		printf("[%s] [%s] [%s] [%c] [%s] [%s] [%s] [%s] [%s] [%d]\n", movie[i].title
+														, movie[i].actor
+														, movie[i].language
+														, movie[i].releaseDate
+														, movie[i].seenDate
+														, movie[i].viewMethod
+														, movie[i].Rating);
 		
 	}
 	fclose(inputFile);
 	writeDatabase(movie, header);
 
 	return 0;
-	}
+	}*/
+
+int main()
+{
+	printf("Hello world\n");
+}
