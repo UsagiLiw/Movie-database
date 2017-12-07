@@ -53,7 +53,7 @@ void readBuffer(char *buffer, MOVIE_T *movie)
 	}
 
 void writeDatabase(MOVIE_T *movie,int *header)
-    {
+{
 	FILE *outputFile = NULL; 
 	outputFile = fopen(DATABASE, "w");
 	if(outputFile == NULL)
@@ -63,4 +63,42 @@ void writeDatabase(MOVIE_T *movie,int *header)
 	}
 
     fclose(outputFile);
-    }
+}
+
+int main()
+	{
+	char buffer[4096];
+	int header[2] = {0,0};
+	int count = 0;
+	MOVIE_T *movie = NULL;
+	FILE *inputFile = NULL;
+
+	inputFile = fopen("../DATABASE.txt", "r");
+	if(inputFile == NULL)
+	{
+		printf("Cannot open the file!\n");
+		exit (1);
+	}
+	sscanf(buffer, "%d %d", &header[0], &header[1]);
+	/* allocate memories for hold each data */
+	movie = (MOVIE_T*) calloc(header[1], sizeof(MOVIE_T));
+	/* if can't reserve memories display error and exit */
+	if(movie == NULL)
+	{
+		printf("Cannot allocate memories\n");
+		exit(2);
+	}
+ 
+	/* get all data */
+	while(fgets(buffer,sizeof(buffer),inputFile) != NULL)
+	{
+		removeNewline(buffer);
+		readBuffer(buffer, (movie+count));
+		printf("[%s] [%s] [%s] [%c] [%s] [%s] [%s] [%s] [%s] [%s]\n", (movie+count)->title, (movie+count)->actor, (movie+count)->category, (movie+count)->releaseDate, (movie+count)->seenDate, (movie+count)->viewMethod, (movie+count)->rating);
+		count++;
+	}
+	fclose(inputFile);
+	writeDatabase(movie, header);
+
+	return 0;
+	}
