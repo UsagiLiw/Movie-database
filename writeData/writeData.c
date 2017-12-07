@@ -65,7 +65,7 @@ void writeDatabase(MOVIE_T *movie, int *header)
 	fprintf(inputFile,"%d\n",header);
 	for(i = 0; i < header; i++)
 	{
-		fprintf(inputFile,"[%s] [%s] [%s] [%c] [%s] [%s] [%s] [%s] [%s] [%d]\n", movie[i].title
+		fprintf(inputFile,"[%s] [%s] [%s] [%s] [%s] [%s] [%s] [%s] [%s] [%d]\n", movie[i].title
 																, movie[i].actor
 																, movie[i].language
 																, movie[i].releaseDate
