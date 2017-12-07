@@ -9,7 +9,7 @@
 #include<string.h>
 #include<ctype.h>
 
-#include"../adddata/addDataFunction.h"
+#include"../addData/addDataFunction.h"
 
 /*
 *	addData - This function will get the data from user with valid format.
@@ -24,34 +24,40 @@ void addData(MOVIE_T*addData,int*header)
 	memset(input, 0, sizeof(input));
 	/*Ask for movie name*/
 	getMovie(input);
-	strcpy(addDadta[i].title, input);
+	strcpy(addData[i].title, input);
 
 	/*Ask for actor name and lastname*/
 	getActorName(input);
-	strcpy(addDadta[i].actor, input);
+	strcpy(addData[i].actor, input);
 
 	/*Ask for category of the movie*/
 	getCategory(input);
-	strcpy(addDadta[i].category, input);
+	strcpy(addData[i].category, input);
 
 	/*Ask for movie's language*/
 	getLanguage(input);
-	strcpy(addDadta[i].language, input);
+	strcpy(addData[i].language, input);
 
 	/*Ask for movie's release date*/
 	getRelease(input);
-	strcpy(addDadta[i].releaseDate, input);
+	strcpy(addData[i].releaseDate, input);
 
 	/*Ask for the date user watch the movie*/
 	getWatchdate(input);
-	strcpy(addDadta[i].seenDate, input);
+	if(strlen(input)>0)
+	{
+		strcpy(addData[i].seenDate, input);
 
-	/*Ask watched method of the user*/
-	getMethod(input);
-	strcpy(addDadta[i].viewMethod, input);
+		/*Ask watched method of the user*/
+		getMethod(input);
+		strcpy(addData[i].viewMethod, input);
 
-	/*Ask for user's rating of the movie*/
-	getRating(input);
-	strcpy(addDadta[i].Rating, input);
+		/*Ask for user's rating of the movie*/
+		getRating(input);
+		strcpy(addData[i].Rating, input);
+	}
+	
+
+
 }
 
