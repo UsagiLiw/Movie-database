@@ -213,7 +213,7 @@ int searchOption(MOVIE_T* movie, int *header)
         memset(choice, 0, sizeof(choice));
         fgets(input, sizeof(input), stdin);
         sscanf(input,"%d",&choice);
-       	if(choice < 0 || choice > 9 || !(isdigit(input[i])))
+       	if(choice < 0 || choice > 4 || !(isdigit(input[i])))
         {
            	printf("Your choice is not exist\n");
        	}
@@ -221,7 +221,7 @@ int searchOption(MOVIE_T* movie, int *header)
        	{
            	break;
        	}
-       	if(choice > 0 && choice <= 9)
+       	if(choice > 0 && choice <= 4)
        	{
            	searchData(movie, header, choice);
         }
