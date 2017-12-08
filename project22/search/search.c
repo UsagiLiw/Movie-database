@@ -12,18 +12,18 @@ int titleSearch(MOVIE_T* movie, int* header, char search)
 	int count = 0;
 	int i;
 
-	position = (int*) calloc(header, sizeof(int));
-	for(i=0; i < header; i++)
+	position = (int*) calloc(*header, sizeof(int));
+	for(i=0; i < *header; i++)
 	{
 		strcpy(tmpTitle, movie->title);
-		if(strstr(tmpTitle, search) != NULL)
+		if(strstr(tmpTitle, &search) != NULL)
 		{
            	count++;
 			printf("#%d - %s", count, movie->title);
 			position[count] = i;
 		}
 	}
-	displaySearch(count, position)
+	displaySearch(count, position);
 	return count;
 }
 int actorSearch(MOVIE_T* movie, int* header, char search)
@@ -32,17 +32,17 @@ int actorSearch(MOVIE_T* movie, int* header, char search)
 	int* position;
 	int count = 0;
 	int i;
-	for(i=0; i < header; i++)
+	for(i=0; i < *header; i++)
 	{
 		strcpy(tmpActor, movie->actor);
-		if(strstr(tmpActor, search) != NULL)
+		if(strstr(tmpActor, &search) != NULL)
 		{
            	count++;
 			printf("#%d - %s", count, movie->actor);
 			position[count] = i;
 		}
 	}
-	displaySearch(count, position)
+	displaySearch(count, position);
 	return count;
 }
 int categorySearch(MOVIE_T* movie, int* header, char search)
@@ -52,17 +52,17 @@ int categorySearch(MOVIE_T* movie, int* header, char search)
 	int count = 0;
 	int i;
 
-	for(i=0; i < header; i++)
+	for(i=0; i < *header; i++)
 	{
 		strcpy(tmpCategory, movie->category);
-		if(strstr(tmpCategory, search) != NULL)
+		if(strstr(tmpCategory, &search) != NULL)
 		{
            	count++;
 			printf("#%d - %s", count, movie->category);
 			position[count] = i;
 		}
 	}
-	displaySearch(count, position)
+	displaySearch(count, position);
 	return count;
 }
 int releaseSearch(MOVIE_T* movie, int* header, char search)
@@ -71,21 +71,21 @@ int releaseSearch(MOVIE_T* movie, int* header, char search)
 	int* position;
 	int count = 0;
 	int i;
-	for(i=0; i < header; i++)
+	for(i=0; i < *header; i++)
 	{
-		strcpy(tmpRelease, movie->releaseDate)
-		if(strstr(tmpCategory, search) != NULL)
+		strcpy(tmpRelease, movie->releaseDate);
+		if(strstr(tmpRelease, &search) != NULL)
 		{
            	count++;
 			printf("#%d - %s", count, movie->releaseDate);
 			position[count] = i;
 		}
 	}
-	displaySearch(count, position)
+	displaySearch(count, position);
 	return count;
 }
 
-int displaySearch(MOIVIE_T*movie, int count, int* position)
+int displaySearch(int count, int* position)
 {
     char input[64];
     char choice[64];
@@ -195,7 +195,7 @@ void searchData(MOVIE_T* movie, int* header, int choice)
 			sscanf(input, "%d", &which);
 		displayEach(movie, position[which]);
 }
-void searchOption(MOVIE_T* movie, int *header)
+void searchOption(MOVIE_T* movie, int header)
 {
     char input[256];
     int choice;
